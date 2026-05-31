@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
 export default function BorrowerPage() {
   const [fullName, setFullName] = useState("");
   const [pan, setPan] = useState("");
@@ -24,7 +24,7 @@ export default function BorrowerPage() {
         localStorage.getItem("token");
 
       const response = await fetch(
-        "http://localhost:5000/api/loan/my-loans",
+        `${API_URL}/api/loan/my-loans`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -48,7 +48,7 @@ export default function BorrowerPage() {
 
       // STEP 1
       const personalResponse = await fetch(
-        "http://localhost:5000/api/loan/personal",
+        `${API_URL}/api/loan/personal`,
         {
           method: "POST",
           headers: {
@@ -83,7 +83,7 @@ export default function BorrowerPage() {
 
       // STEP 2
       const applyResponse = await fetch(
-        "http://localhost:5000/api/loan/apply",
+        `${API_URL}/api/loan/apply`,
         {
           method: "POST",
           headers: {

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
 export default function DisbursementPage() {
   const [loans, setLoans] = useState<any[]>([]);
 
@@ -14,7 +14,7 @@ export default function DisbursementPage() {
       const token = localStorage.getItem("token");
 
       const response = await fetch(
-        "http://localhost:5000/api/loan/all",
+        `${API_URL}/api/loan/all`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -38,7 +38,7 @@ export default function DisbursementPage() {
         localStorage.getItem("token");
 
       await fetch(
-        `http://localhost:5000/api/disbursement/${loanId}/disburse`,
+        `${API_URL}/api/disbursement/${loanId}/disburse`,
         {
           method: "PATCH",
           headers: {

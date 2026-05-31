@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
 export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -9,7 +9,7 @@ export default function LoginPage() {
  const handleLogin = async () => {
   try {
     const response = await fetch(
-      "http://localhost:5000/api/auth/login",
+      `${API_URL}/api/auth/login`,
       {
         method: "POST",
         headers: {

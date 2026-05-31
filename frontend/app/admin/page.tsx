@@ -1,5 +1,6 @@
 "use client";
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
 import { useEffect, useState } from "react";
 
 export default function AdminPage() {
@@ -14,7 +15,7 @@ export default function AdminPage() {
       const token = localStorage.getItem("token");
 
       const response = await fetch(
-        "http://localhost:5000/api/loan/all",
+        `${API_URL}/api/loan/all`,
         {
           headers: {
             Authorization: `Bearer ${token}`,

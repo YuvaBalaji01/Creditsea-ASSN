@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
 export default function RegisterPage() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -10,7 +10,7 @@ export default function RegisterPage() {
   const handleRegister = async () => {
     try {
       const response = await fetch(
-        "http://localhost:5000/api/auth/register",
+        `${API_URL}/api/auth/register`,
         {
           method: "POST",
           headers: {
